@@ -20,7 +20,7 @@ class Attacker:
     # PGD
     def pgd_attack(self, data, ori_data, eps, alpha, data_grad) :
         
-        adv_data = data - alpha * data_grad.sign() # + -> - !!!
+        adv_data = data - alpha * data_grad.sign()
         eta = torch.clamp(adv_data - ori_data.data, min=-eps, max=eps)
         data = ori_data + eta
 
